@@ -53,12 +53,7 @@
 <version>6.1.1</version>
 <scope>test</scope>
 </dependency>
-<dependency>
-<groupId>org.testng</groupId>
-<artifactId>testng</artifactId>
-<version>6.3.1</version>
-<scope>test</scope>
-</dependency>
+
 <dependency>
 <groupId>org.test4j</groupId>
 <artifactId>test4j.testng</artifactId>
