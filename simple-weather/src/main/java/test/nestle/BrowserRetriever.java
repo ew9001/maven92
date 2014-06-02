@@ -1,4 +1,4 @@
-package org.sonatype.mavenbook;
+package test.nestle;
 
 
 import java.io.File;
@@ -7,8 +7,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;

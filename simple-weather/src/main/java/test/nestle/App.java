@@ -1,4 +1,4 @@
-package org.sonatype.mavenbook;
+package test.nestle;
 
 /**
  * Hello world!
