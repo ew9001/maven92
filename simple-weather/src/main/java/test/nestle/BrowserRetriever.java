@@ -119,10 +119,10 @@ public class BrowserRetriever {
 	    File screenshot = ((TakesScreenshot)augmentedDriver).getScreenshotAs(OutputType.FILE);
 	    myTitle = driver.getTitle();
 	    FileUtils.copyFile(screenshot, new File(name));
-  	//Reporter.log("<a href='"+ local+"/" + name + "'> <img src='"+ local+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+ urlname+"'>'"+ urlname+"'</a> " + " </a>");
-  	File scrFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	   		   FileUtils.copyFile(scrFile1, new File("Screenshots/" + zip + "/" + timeStamp + "/" + "Successful-Registration-2.png"));
-	   		  driver.quit();   
+    	//Reporter.log("<a href='"+ local+"/" + name + "'> <img src='"+ local+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+ urlname+"'>'"+ urlname+"'</a> " + " </a>");
+    	Reporter.log("<a href='"+ safe+"/" + name + "'> <img src='"+ safe+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+  myTitle+"'>'"+  myTitle+"'</a> " + " </a>");
+    	    
+
     
     
     
