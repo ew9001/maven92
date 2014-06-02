@@ -2,6 +2,7 @@ package test.nestle;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,11 +29,12 @@ public class BrowserRetriever {
 	  public String baseUrl = "http://stage.coffee-mate.com";
 		public static final String AUTOMATE_KEY = "XsPyFTirN4mH8aCLMB9A";
 		static String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		String name="Chrome/" + timeStamp + "_" + "Successful-Contact-Submit-Chrome-1.png";
+		public String name="Chrome/" + timeStamp + "_" + "Successful-Contact-Submit-Chrome-1.png";
 		String local=(new java.io.File("").getAbsolutePath());
 		String data="" + local + "/" + "infoqa.xls";	
 		String myTitle;
 	    String safe = "http://10.10.10.34:8080/job/TESTNG3/ws/PageLoads";	
+	   
   private static Logger log = Logger.getLogger(BrowserRetriever.class);
 
   public InputStream retrieve(String zip) throws Exception {
@@ -102,15 +104,11 @@ public class BrowserRetriever {
 	    for (int second = 0;; second++) {
 	    	
 	    	try { if (driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Thanks for taking the time to get in touch with us[\\s\\S]*$")) break; } catch (Exception e) {}
-	    	Thread.sleep(1000);
+	    	Thread.sleep(800);
 	    }
-	    WebDriver augmentedDriver = new Augmenter().augment(driver);
-	    System.out.println("Take a screenshot for  " + zip);
-	    File screenshot = ((TakesScreenshot)augmentedDriver).getScreenshotAs(OutputType.FILE);
-	    myTitle = driver.getTitle();
-	    FileUtils.copyFile(screenshot, new File(name));
-    	//Reporter.log("<a href='"+ local+"/" + name + "'> <img src='"+ local+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+ urlname+"'>'"+ urlname+"'</a> " + " </a>");
-    	//Reporter.log("<a href='"+ safe+"/" + name + "'> <img src='"+ safe+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+  myTitle+"'>'"+  myTitle+"'</a> " + " </a>");
+	    
+	    takeScreen();
+	    
     	    
 
     
@@ -222,5 +220,16 @@ public class BrowserRetriever {
 	      return driver;
 	   
 	    
+	 }
+	 public void takeScreen() throws IOException 
+	 {
+		 WebDriver augmentedDriver = new Augmenter().augment(driver);
+		    System.out.println("Take a screenshot for  ");
+		    File screenshot = ((TakesScreenshot)augmentedDriver).getScreenshotAs(OutputType.FILE);
+		    myTitle = driver.getTitle();
+		    FileUtils.copyFile(screenshot, new File(name));
+	    	//Reporter.log("<a href='"+ local+"/" + name + "'> <img src='"+ local+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+ urlname+"'>'"+ urlname+"'</a> " + " </a>");
+	    	//Reporter.log("<a href='"+ safe+"/" + name + "'> <img src='"+ safe+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+  myTitle+"'>'"+  myTitle+"'</a> " + " </a>");
+		 
 	 }
 }
