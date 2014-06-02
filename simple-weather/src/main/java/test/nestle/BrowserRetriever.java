@@ -23,7 +23,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+import org.openqa.selenium.TakesScreenshot;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
