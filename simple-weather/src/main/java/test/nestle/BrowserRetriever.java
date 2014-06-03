@@ -30,7 +30,7 @@ public class BrowserRetriever {
 	  public String baseUrl = "http://stage.coffee-mate.com";
 		public static final String AUTOMATE_KEY = "XsPyFTirN4mH8aCLMB9A";
 		static String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		public String name="Chrome/" + timeStamp + "_" + "Successful-Contact-Submit-Chrome-1.png";
+		
 		String local=(new java.io.File("").getAbsolutePath());
 		String data="" + local + "/" + "infoqa.xls";	
 		String myTitle;
@@ -43,7 +43,7 @@ public class BrowserRetriever {
     String url = "http://weather.yahooapis.com/forecastrss?p=" + zip;
     URLConnection conn = new URL(url).openConnection();
     System.out.println("I Picked " +zip);
-    
+    String name="Screenshot/" + timeStamp + "_" + "Successful-Contact-Submit " + zip + ".png";
     if (zip.equals("firefox")) {
 		  driver=browserFirefox();
 		}
