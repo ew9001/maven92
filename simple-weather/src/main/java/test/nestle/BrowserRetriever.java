@@ -27,6 +27,7 @@ public class BrowserRetriever {
 	private static WebDriver driver;
 	  public static final String USERNAME = "earlwillis1";
 	  public String browser_type;
+	  public  String name="Screenshot/" + timeStamp + "_" + "Successful-Contact-Submit.png";
 	  public String baseUrl = "http://stage.coffee-mate.com";
 		public static final String AUTOMATE_KEY = "XsPyFTirN4mH8aCLMB9A";
 		static String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
@@ -43,7 +44,7 @@ public class BrowserRetriever {
     String url = "http://weather.yahooapis.com/forecastrss?p=" + zip;
     URLConnection conn = new URL(url).openConnection();
     System.out.println("I Picked " +zip);
-    String name="Screenshot/" + timeStamp + "_" + "Successful-Contact-Submit " + zip + ".png";
+   
     if (zip.equals("firefox")) {
 		  driver=browserFirefox();
 		}
@@ -230,7 +231,7 @@ public class BrowserRetriever {
 		    myTitle = driver.getTitle();
 		    FileUtils.copyFile(screenshot, new File(name));
 	    	//Reporter.log("<a href='"+ local+"/" + name + "'> <img src='"+ local+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+ urlname+"'>'"+ urlname+"'</a> " + " </a>");
-	    	Reporter.log("<a href='"+ safe+"/" + name + "'> <img src='"+ safe+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+  myTitle+"'>'"+  myTitle+"'</a> " + " </a>");
+	    	//Reporter.log("<a href='"+ safe+"/" + name + "'> <img src='"+ safe+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+  myTitle+"'>'"+  myTitle+"'</a> " + " </a>");
 		 
 	 }
 }
