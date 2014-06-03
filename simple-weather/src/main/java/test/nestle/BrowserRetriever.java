@@ -12,7 +12,11 @@ import java.util.Calendar;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.junit.After;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -31,6 +35,7 @@ public class BrowserRetriever {
 	  public String baseUrl = "http://stage.coffee-mate.com";
 		public static final String AUTOMATE_KEY = "XsPyFTirN4mH8aCLMB9A";
 		static String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		 private boolean acceptNextAlert = true;
 		
 		String local=(new java.io.File("").getAbsolutePath());
 		String data="" + local + "/" + "infoqa.xls";	
@@ -108,6 +113,8 @@ public class BrowserRetriever {
 	    	try { if (driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Thanks for taking the time to get in touch with us[\\s\\S]*$")) break; } catch (Exception e) {}
 	    	Thread.sleep(800);
 	    }
+	    
+	   
 	    
 	    takeScreen();
 	    
@@ -234,4 +241,43 @@ public class BrowserRetriever {
 	    	//Reporter.log("<a href='"+ safe+"/" + name + "'> <img src='"+ safe+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+  myTitle+"'>'"+  myTitle+"'</a> " + " </a>");
 		 
 	 }
+	 
+	 @After
+	  public void tearDown() throws Exception {
+	    driver.quit();
+	    
+	  }
+
+	  private boolean isElementPresent(By by) {
+	    try {
+	      driver.findElement(by);
+	      return true;
+	    } catch (NoSuchElementException e) {
+	      return false;
+	    }
+	  }
+
+	  private boolean isAlertPresent() {
+	    try {
+	      driver.switchTo().alert();
+	      return true;
+	    } catch (NoAlertPresentException e) {
+	      return false;
+	    }
+	  }
+
+	  private String closeAlertAndGetItsText() {
+	    try {
+	      Alert alert = driver.switchTo().alert();
+	      String alertText = alert.getText();
+	      if (acceptNextAlert) {
+	        alert.accept();
+	      } else {
+	        alert.dismiss();
+	      }
+	      return alertText;
+	    } finally {
+	      acceptNextAlert = true;
+	    }
+	  }
 }
