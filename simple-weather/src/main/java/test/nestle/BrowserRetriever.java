@@ -225,13 +225,16 @@ public class BrowserRetriever {
 	   
 	    
 	 }
-	 public void takeScreen() throws IOException 
+	 public WebDriver takeScreen() throws MalformedURLException 
 	 {
 		 WebDriver augmentedDriver = new Augmenter().augment(driver);
-		    System.out.println("Take a screenshot for  ");
+		    System.out.println("Take a screenshot for  " +driver);
 		    File screenshot = ((TakesScreenshot)augmentedDriver).getScreenshotAs(OutputType.FILE);
 		    myTitle = driver.getTitle();
+		     System.out.println("Looking at the page " +myTitle);
 		    FileUtils.copyFile(screenshot, new File(name));
+		    
+		    return driver;
 	
 	    	//Reporter.log("<a href='"+ local+"/" + name + "'> <img src='"+ local+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+ urlname+"'>'"+ urlname+"'</a> " + " </a>");
 	    	//Reporter.log("<a href='"+ safe+"/" + name + "'> <img src='"+ safe+"/"+ name + " ' height='100' width='100'/>" + "<a href='"+  myTitle+"'>'"+  myTitle+"'</a> " + " </a>");
